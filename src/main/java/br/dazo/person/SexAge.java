@@ -1,3 +1,5 @@
+package br.dazo.person;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,29 +9,21 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PersonEntity {
-
-    private String name;
+public class SexAge {
 
     private Integer age;
 
-    private String cpf;
-
     private SexType sex;
 
-    public PersonEntity(String name, Integer age, String cpf, SexType sex) {
-        this.name = name;
-        this.age = age;
-        this.cpf = cpf;
+    public SexAge(SexType sex, Integer age) {
         this.sex = sex;
+        this.age = age;
     }
 
     @Override
     public String toString() {
-        return "PersonEntity{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", cpf='" + cpf + '\'' +
+        return "br.dazo.person.SexAge{" +
+                "age=" + age +
                 ", sex=" + sex +
                 '}';
     }
@@ -38,12 +32,13 @@ public class PersonEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonEntity that = (PersonEntity) o;
-        return Objects.equals(cpf, that.cpf);
+        SexAge sexAge = (SexAge) o;
+        return Objects.equals(age, sexAge.age) &&
+                sex == sexAge.sex;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpf);
+        return Objects.hash(age, sex);
     }
 }

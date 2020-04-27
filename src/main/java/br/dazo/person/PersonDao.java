@@ -1,3 +1,5 @@
+package br.dazo.person;
+
 import java.util.List;
 
 public class PersonDao {
