@@ -15,6 +15,10 @@ public class PessoaService {
         personsFilterAgeGreater(persons, 18);
         agesFilterAgeGreater(persons, 18);
         agesFilterAgeGreater2(persons, 18);
+        reduceSum(persons);
+        reduceSum2(persons);
+        reduceSum3(persons);
+        listToMap(persons);
     }
 
     /*
@@ -102,4 +106,67 @@ public class PessoaService {
         System.out.println("-------------END-------------");
     }
 
+    /*
+     * Example reduce and mapToInt
+     * Method return the sum off ages
+     * */
+    public static void reduceSum(List<PersonEntity> persons) {
+        System.out.println("Example reduce and mapToInt: reduceSum");
+
+        Integer soma = persons.stream()
+                .mapToInt(PersonEntity::getAge)
+                .reduce(0, Integer::sum);
+
+        System.out.println(soma);
+
+        System.out.println("-------------END-------------");
+
+    }
+
+    /*
+     * Example map collect(summingInt)
+     * Method return the sum off ages
+     * */
+    public static void reduceSum2(List<PersonEntity> persons) {
+
+        System.out.println("Example map collect(summingInt): reduceSum2");
+
+        Integer soma = persons.stream()
+                .map(PersonEntity::getAge)
+                .collect(Collectors.summingInt(Integer::intValue));
+
+        System.out.println(soma);
+
+        System.out.println("-------------END-------------");
+
+    }
+
+    /*
+     * Example sum and mapToInt
+     * Method return the sum off ages
+     * */
+    public static void reduceSum3(List<PersonEntity> persons) {
+
+        System.out.println("Example reduce and mapToInt: reduceSum3");
+
+        Integer soma = persons.stream()
+                .mapToInt(PersonEntity::getAge)
+                .sum();
+
+        System.out.println(soma);
+
+        System.out.println("-------------END-------------");
+    }
+
+    public static void listToMap(List<PersonEntity> persons) {
+
+        System.out.println("Example collect(toMap): listToMap");
+
+        persons.stream()
+                .collect(Collectors.toMap(PersonEntity::getCpf, PersonEntity::getName))
+                .forEach((k, v) -> System.out.println("Item : " + k + " Count : " + v));
+
+
+        System.out.println("-------------END-------------");
+    }
 }
