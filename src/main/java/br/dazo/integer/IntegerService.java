@@ -11,7 +11,7 @@ public class IntegerService {
 
         List<Integer> numbers = generateList1Until20();
 
-        minNumber();
+        minNumber(4);
 
         minReduceNumber2();
         maxNumber();
