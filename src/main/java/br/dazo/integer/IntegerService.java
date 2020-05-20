@@ -13,7 +13,7 @@ public class IntegerService {
 
         minNumber();
 
-        minReduceNumber2();
+        minReduceNumber2(2);
         maxNumber();
         maxReduceNumber2();
         sumNumber();
